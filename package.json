@@ -4,20 +4,28 @@
   "description": "uncleanRealm",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/index.js --exec babel-node"
+    "start": "nodemon src/index.js --exec babel-node",
+    "prebuild": "rm -rf dist/*",
+    "build": "babel src --out-dir dist",
+    "serve": "node dist/index.js",
+    "test": "env NODE_ENV=test node dist/index.js"
   },
   "author": "satorik",
   "license": "ISC",
   "dependencies": {
     "apollo-server": "^2.12.0",
+    "core-js": "^3.6.5",
     "graphql": "^15.0.0",
     "nodemon": "^2.0.3",
+    "pg": "^8.0.2",
+    "pg-hstore": "^2.3.3",
+    "regenerator-runtime": "^0.13.5",
     "sequelize": "^5.21.6"
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
     "@babel/node": "^7.8.7",
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3"
+    "@babel/preset-env": "^7.9.5"
   }
 }

@@ -1,14 +1,15 @@
 import { makeExecutableSchema } from 'graphql-tools'
 
-import query from './types/query'
-import mutation from './types/mutation'
+import query from './query'
+import mutation from './mutation'
 
-import navigationLink from './types/navigationLink'
+import game from './types/game'
+import masterData from './types/masterData'
 
 import resolvers from '../resolvers'
 
 export const schema = makeExecutableSchema({
-  typeDefs: ['scalar Upload ', query, mutation],
+  typeDefs: ['scalar Upload ', game, masterData, query, mutation],
   resolvers,
 })
 

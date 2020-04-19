@@ -1,4 +1,4 @@
-import {  ApolloServer } from 'apollo-server-express'
+import {  ApolloServer } from 'apollo-server'
 import { schema } from './schema'
 import { models } from './models'
 //import isAuth from './middleware/isAuth'
@@ -9,7 +9,7 @@ const server = new ApolloServer({
   context: (req) => {
     return {
       models,
-      auth: isAuth(req)
+      //auth: isAuth(req)
     }
   },
   formatError: (err) => {
