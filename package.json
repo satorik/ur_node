@@ -4,6 +4,7 @@
   "description": "uncleanRealm",
   "main": "index.js",
   "scripts": {
+    "create-env": "printenv > .env",
     "prepare": "npm run gcp-build",
     "dev": "nodemon src/index.js --exec babel-node",
     "prebuild": "rm -rf dist/*",
