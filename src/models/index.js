@@ -1,16 +1,12 @@
 import  Sequelize from 'sequelize'
-import configuration from '../config'
 
-const env = process.env.NODE_ENV || 'development'
-const config = configuration[env]
-
-const sequelize = new Sequelize(config.database.db, config.database.user, config.database.password, {
-  host: config.database.host,
+const sequelize = new Sequelize(process.env.db, process.env.user, process.env.password, {
+  host: process.env.host,
   dialect: 'postgres',
   dialectOptions: {
     useUTC: false,
   },
-  schema: config.database.schema,
+  schema: process.env.schema,
   logging: false //console.log
 })
 

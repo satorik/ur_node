@@ -9,7 +9,7 @@
     "prebuild": "rm -rf dist/*",
     "build": "babel src --out-dir dist",
     "gcp-build": "npm run build",
-    "start": "env NODE_ENV=test node dist/index.js"
+    "start": "node dist/index.js"
   },
   "author": "satorik",
   "license": "ISC",
