@@ -3,9 +3,9 @@ import 'regenerator-runtime/runtime'
 import server from './server'
 import populate from './utils/populate'
 
-require('dotenv').config()
+require('@google-cloud/debug-agent').start()
 
-console.log('index', process.env.db, process.env.user, process.env.host)
+require('dotenv').config()
 
 populate(false).
   then(res => {
