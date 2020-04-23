@@ -5,6 +5,8 @@ import populate from './utils/populate'
 
 require('dotenv').config()
 
+console.log('index', process.env.db, process.env.user, process.env.host)
+
 populate(false).
   then(res => {
     server.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
