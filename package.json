@@ -8,7 +8,7 @@
     "prepare": "npm run gcp-build",
     "dev": "nodemon src/index.js --exec babel-node",
     "prebuild": "rm -rf dist/*",
-    "build": "babel src --out-dir dist",
+    "build": "babel src --out-dir dist --copy-files",
     "gcp-build": "npm run build",
     "start": "node dist/index.js"
   },

@@ -11,6 +11,7 @@ export default `
     name_rus: String!
     name_eng: String
     name_orig: String
+    main: Boolean
   }
 
   type Location {

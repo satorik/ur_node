@@ -34,6 +34,7 @@ const Character = (sequelize, DataTypes ) => {
       }
     }
   },
+  main: {type: DataTypes.BOOLEAN}
   }
   )}
 

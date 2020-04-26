@@ -1,5 +1,9 @@
 import  Sequelize from 'sequelize'
+import path from 'path'
 
+require('dotenv').config({ path: path.resolve(__dirname, '../../.env') })
+
+//console.log('index', process.env.host)
 const sequelize = new Sequelize(process.env.db, process.env.user, process.env.password, {
   host: process.env.host,
   dialect: 'postgres',
