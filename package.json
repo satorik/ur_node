@@ -7,7 +7,7 @@
     "create-env": "printenv > .env",
     "prepare": "npm run gcp-build",
     "dev": "nodemon src/index.js --exec babel-node",
-    "prebuild": "rm -rf dist/*",
+    "prebuild2": "rm -rf dist/*",
     "build": "babel src --out-dir dist --copy-files",
     "gcp-build": "npm run build",
     "start": "node dist/index.js"

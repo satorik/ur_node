@@ -1,6 +1,6 @@
 node_modules
 nodemon.json
-errors.log
-src/config.js
-src/.env
+dist
 .env
+errors.log
+src/__txt
