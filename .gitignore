@@ -4,3 +4,4 @@ dist
 .env
 errors.log
 src/__txt
+src/config.js

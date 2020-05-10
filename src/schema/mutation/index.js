@@ -3,8 +3,8 @@ const mutation =   `
     getNoun(id: ID!): Noun!
     getRandomNoun: [Noun!]
     getRandomRaiting: [Raiting!]
-    getRandomCharacter(count: Int): [Character!]
-    getRandomLocation: [Location!]
+    getRandomCharacter(count: Int, fandomId: ID!): [Character!]
+    getRandomLocation(fandomId: ID!): [Location!]
     getRandomGenre: [Genre!]
     getRandomTrop: [Trop!]
     createGame(inputData: CreateGameData!): Game!

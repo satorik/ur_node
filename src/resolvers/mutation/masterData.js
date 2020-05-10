@@ -1,3 +1,5 @@
+import { ApolloError } from "apollo-server"
+
 const getRandom = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
@@ -22,8 +24,14 @@ const getRandomValue = async (model) => {
   return [model.findOne({where: {id: randomId}})]
 }
 
-const getRandomCharacterValue = async (model) => {
-  const charArray = await model.findAll()
+const getRandomLocationValue = async (model, fandomId) => {
+  const locArray = await model.findAll({where: {fandomId}})
+  const randomId = getRandom(0, locArray.length-1)
+  return [locArray[randomId]]
+}
+
+const getRandomCharacterValue = async (model, fandomId) => {
+  const charArray = await model.findAll({where: {fandomId}})
   const fullCharArray = [...charArray, ...charArray.filter(char => char.main)]
   const randomisedArray = shuffle(fullCharArray)
   const randomId1 = getRandom(0, randomisedArray.length-1)
@@ -55,12 +63,20 @@ const masterDataMutation = {
     return getRandomValue(models.trop)
   },
 
-  async getRandomLocation(parent, {id}, { models }) {
-    return getRandomValue(models.location)
+  async getRandomLocation(parent, {fandomId}, { models }) {
+    if (!fandomId) throw new ApolloError('No fandom')
+    const fandom = await models.fandom.findOne({where: {id: fandomId}})
+    if (!fandom) throw new ApolloError('No such fandom')
+
+    return getRandomLocationValue(models.location, fandomId)
   },
 
-  async getRandomCharacter(parent, {id}, { models }) {
-    return getRandomCharacterValue(models.character)
+  async getRandomCharacter(parent, {fandomId}, { models }) {
+    if (!fandomId) throw new ApolloError('No fandom')
+    const fandom = await models.fandom.findOne({where: {id: fandomId}})
+    if (!fandom) throw new ApolloError('No such fandom')
+
+    return getRandomCharacterValue(models.character, fandomId)
   },
 }
 
